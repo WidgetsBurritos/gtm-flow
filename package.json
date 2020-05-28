@@ -8,5 +8,8 @@
   },
   "keywords": [],
   "author": "David Stinemetze",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "mermaid": "^8.5.1"
+  }
 }
