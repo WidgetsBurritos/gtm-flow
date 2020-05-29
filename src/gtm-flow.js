@@ -15,6 +15,17 @@ const getTriggerHashMap = (gtmContainer) => {
 };
 
 /**
+ * Get Tag Hash Map.
+ */
+const getTagHashMap = (gtmContainer) => {
+  let tags = {};
+  for (const tag of gtmContainer.containerVersion.tag) {
+    tags[tag.tagId] = tag;
+  }
+  return tags;
+};
+
+/**
  * Get Trigger Tags Hash Map.
  */
 const getTagHashMapByTrigger = (gtmContainer) => {
@@ -29,18 +40,6 @@ const getTagHashMapByTrigger = (gtmContainer) => {
     }
   }
   return triggerTags;
-};
-
-/**
- * Adds a left and right portion to a template array.
- */
-const addToTemplate = (template, left, right, actionLabel = false) => {
-  if (actionLabel) {
-    template.push(`\trigger${left} -->|${actionLabel}| ${right}`);
-  }
-  else {
-    template.push(`\trigger${left} --> ${right}`);
-  }
 };
 
 /**
@@ -64,16 +63,16 @@ const generateTriggerReportFlowCharts = (gtmContainer) => {
       const tag = tags[tagId];
       const blockingTriggers = tag.blockingTriggerId && tag.blockingTriggerId.sort() || [];
       let leftId = `trigger${triggerId}`;
-      let left = `state "${trigger.name}" as ${leftId}`;
+      let left = `${leftId}: ${trigger.name}`;
       let labelTokens = [];
       let label = '';
       const farRightId = `tag${tagId}`;
       let rightId = farRightId;
       let id = `trigger${triggerId}`;
-      template.push(`tag${tagId} : "TAG -- ${tag.name}"`);
-      template.push(`[*] --> ${id}`);
-      template.push(`${id} : ${trigger.name}`);
-      template.push(`${id} --> [*]: Not Triggered`);
+      template.push(`\ttag${tagId} : "TAG -- ${tag.name}"`);
+      template.push(`\t[*] --> ${id}`);
+      template.push(`\t${id} : ${trigger.name}`);
+      template.push(`\t${id} --> [*]: Not Triggered`);
 
 
       if (~~blockingTriggers.length) {
@@ -81,16 +80,16 @@ const generateTriggerReportFlowCharts = (gtmContainer) => {
           const blockingTriggerId = blockingTriggers[i];
           const blockingTrigger = triggers[blockingTriggerId];
           rightId = `bTrigger_${triggerId}_${blockingTriggerId}`;
-          template.push(`state "EXCEPTION TRIGGER ${blockingTrigger.name}" as ${rightId}`);
-          template.push(`${rightId} --> [*]: Triggered`);
+          template.push(`\t${rightId}: ${blockingTrigger.name}`);
+          template.push(`\t${rightId} --> [*]: Triggered`);
           const label = i ? 'Not Triggered' : 'Triggered';
-          template.push(`${leftId} --> ${rightId}: ${label}`);
+          template.push(`\t${leftId} --> ${rightId}: ${label}`);
           leftId = rightId;
         }
 
       }
 
-      template.push(`${leftId} --> ${farRightId}`);
+      template.push(`\t${leftId} --> ${farRightId}`);
     }
     flowCharts.push(template);
   }
@@ -98,44 +97,135 @@ const generateTriggerReportFlowCharts = (gtmContainer) => {
 };
 
 /**
+ * Retrieves an operation based on specified type.
+ */
+const getOperation = (type) => {
+  switch (type) {
+    case 'CONTAINS':
+    case 'MATCH_REGEX':
+      return '=~';
+    case 'STARTS_WITH':
+      return '=~^';
+    case 'EQUALS':
+    default:
+      return '=';
+  }
+};
+
+/**
+ * Generates notes
+ */
+const generateFilterNote = (template, filter) => {
+  const type = filter[0].type;
+  const params = filter[0].parameter;
+  if (params[0].type === 'TEMPLATE') {
+    const operation = getOperation(type);
+    template.push(`\t\t${params[0].value} ${operation} ${params[1].value}`);
+  }
+}
+
+const generateTriggerNote = (template, trigger, id) => {
+  template.push(`\tnote right of ${id}`);
+  template.push(`\t\tType = ${trigger.type}`);
+  switch (trigger.type) {
+    case 'CLICK':
+    case 'JS_ERROR':
+    case 'LINK_CLICK':
+    case 'YOU_TUBE_VIDEO':
+    case 'PAGEVIEW':
+    case 'FORM_SUBMISSION':
+    //TODO: REMOVE!
+      // console.log(trigger);
+  }
+  if (trigger.autoEventFilter) {
+    generateFilterNote(template, trigger.autoEventFilter);
+  }
+  if (trigger.customEventFilter) {
+    generateFilterNote(template, trigger.customEventFilter);
+  }
+  if (trigger.filter) {
+    for (const filter of trigger.filter) {
+      const type = filter.type;
+      const operation = getOperation(type);
+      const left = filter.parameter[0].value;
+      const right = filter.parameter[1].value;
+      const negate = filter.parameter[2] && filter.parameter[2].key == 'negate' && filter.parameter[2].value === 'true' ? '!' : '';
+      template.push(`\t\t${left} ${negate}${operation} ${right}`);
+    }
+  }
+  template.push(`\tend note`);
+}
+
+/**
  * Generates the mermaid syntax for creating the respective flowcharts.
  */
 const generateTagReportFlowCharts = (gtmContainer) => {
   let flowCharts = [];
-  // console.log(gtmContainer.containerVersion.tag);
   let triggers = getTriggerHashMap(gtmContainer);
   let triggerTags = getTagHashMapByTrigger(gtmContainer);
-  for (const triggerId in triggerTags) {
-    const trigger = triggers[triggerId];
+  let tags = getTagHashMap(gtmContainer);
 
+  for (const tagId in tags) {
+    let template = ['stateDiagram-v2'];
+    const tag = tags[tagId];
+    const firingTriggers = tag.firingTriggerId && tag.firingTriggerId.sort() || [];
+    const blockingTriggers = tag.blockingTriggerId && tag.blockingTriggerId.sort() || [];
+    let triggerIds = [];
+    for (const firingTriggerId of firingTriggers) {
+      const trigger = triggers[firingTriggerId];
+      // TODO: Why does this condition happen? (trigger.triggerId: 2147479553 -- MAXINT)
+      if (!trigger) {
+        continue;
+      }
+      let id = `trigger${firingTriggerId}`;
+      template.push(`\t[*] --> ${id}`);
+      template.push(`\t${id}: ${trigger.name}`);
+      generateTriggerNote(template, trigger, id);
+      triggerIds.push(id);
+    }
+    let first = true;
+    let leftId = '[*]';
+    let rightId = `tag${tagId}`;
+    let label = 'Triggered';
+    if (blockingTriggers.length) {
+      for (const blockingTriggerId of blockingTriggers) {
+        const trigger = triggers[blockingTriggerId];
+        rightId = `bTrigger${blockingTriggerId}`;
+        // TODO: Why does this condition happen? (trigger.triggerId: 2147479553 -- MAXINT)
+        if (!trigger) {
+          continue;
+        }
+        template.push(`\t${rightId} : ${trigger.name}`);
+        generateTriggerNote(template, trigger, rightId);
+        // Our first time through the loop, link the regular triggers to the first
+        // blocking trigger.
+        if (first) {
+          for (const triggerId of triggerIds) {
+            template.push(`\t${triggerId} --> ${rightId} : Triggered`);
+            template.push(`\t${triggerId} --> [*]: Not Triggered`);
+          }
+          first = false;
+        }
+        else {
+          template.push(`\t${leftId} --> ${rightId}: Not Triggered`);
+          template.push(`\t${leftId} --> [*]: Triggered`);
+        }
+        leftId = rightId;
+      }
+      rightId = `tag${tagId}`;
+      template.push(`\t${rightId}: ${tag.name}`);
+      template.push(`\t${leftId} --> ${rightId}: Not Triggered`);
+      template.push(`\t${leftId} --> [*]: Triggered`)
+    }
+    else {
+      for (const triggerId of triggerIds) {
+        template.push(`${triggerId} --> ${rightId} : Triggered`);
+        template.push(`${triggerId} --> [*] : Not Triggered`);
+      }
+    }
+    flowCharts.push(template);
   }
-  //   // TODO: Why does this condition happen? (trigger.triggerId: 2147479553 -- MAXINT)
-  //   if (!trigger) {
-  //     continue;
-  //   }
-  //
-  //   const tags = triggerTags[triggerId];
-  //   let template = ['graph TD'];
-  //   for (const tagId in tags) {
-  //     const tag = tags[tagId];
-  //     const blockingTriggers = tag.blockingTriggerId && tag.blockingTriggerId.sort() || [];
-  //     // If we have blocking triggers then include them as a middle step.
-  //     let left = `trigger${triggerId}\{Trigger:<br>${trigger.name}\}`;
-  //     const farRight = `tag${tagId}[Tag: ${tag.name}]`;
-  //
-  //     if (~~blockingTriggers.length) {
-  //       for (let i = 0; i < blockingTriggers.length; i++) {
-  //         const blockingTriggerId = blockingTriggers[i];
-  //         const blockingTrigger = triggers[blockingTriggerId];
-  //         const right = `blockingTrigger${triggerId}${blockingTriggerId}\{${blockingTrigger.name}\}`;
-  //         addToTemplate(template, left, right);
-  //         left = right;
-  //       }
-  //     }
-  //     addToTemplate(template, left, farRight);
-  //   }
-  //   flowCharts.push(template);
-  // }
+
   return flowCharts;
 };
 
@@ -143,13 +233,13 @@ const generateTagReportFlowCharts = (gtmContainer) => {
  * Retrieves the HTML page content.
  */
 const getHtmlPage = (content) => {
-  const mermaidJs = fs.readFileSync('./node_modules/mermaid/dist/mermaid.min.js', 'utf8');
+  // const mermaidJs = fs.readFileSync('./node_modules/mermaid/dist/mermaid.min.js', 'utf8');
   return `<!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   <title>Google Tag Manager Flow Charts</title>
-  <script>${mermaidJs}</script>
+  <script src="./node_modules/mermaid/dist/mermaid.min.js"></script>
   <style type="text/css">
   .mermaid {
     border-bottom: 5px dotted #999999;
@@ -215,9 +305,10 @@ const generateTriggerReport = (inFile, outFile) => {
   const gtmContainer = require(inFile);
   const flowCharts = generateTriggerReportFlowCharts(gtmContainer);
   for (const flowChart of flowCharts) {
-    console.log(flowChart.join("\n"));
+    const flowChartDetails = flowChart.join("\n");
+    console.log(flowChartDetails);
     html += '<div class="mermaid">' + "\n";
-    html += flowChart.join("\n") + "\n";
+    html += flowChartDetails + "\n";
     html += '</div>' + "\n";
   }
   const fullHtml = getHtmlPage(html);
@@ -234,8 +325,10 @@ const generateTagReport = (inFile, outFile) => {
   const gtmContainer = require(inFile);
   const flowCharts = generateTagReportFlowCharts(gtmContainer);
   for (const flowChart of flowCharts) {
+    const flowChartDetails = flowChart.join("\n");
+    // console.log(flowChartDetails);
     html += '<div class="mermaid">' + "\n";
-    html += flowChart.join("\n") + "\n";
+    html += flowChartDetails + "\n";
     html += '</div>' + "\n";
   }
   const fullHtml = getHtmlPage(html);
@@ -244,5 +337,14 @@ const generateTagReport = (inFile, outFile) => {
   });
 }
 
-generateTriggerReport('../rackspace-gtm.json', 'trigger-report.html');
-generateTagReport('../rackspace-gtm.json', 'tag-report.html');
+// TODO: read from command line.
+const inFile = '../rackspace-gtm.json';
+const outFile = 'tag-report.html';
+const reportType = 'tag';
+
+if (reportType == 'trigger') {
+  generateTriggerReport(inFile, outFile);
+}
+else {
+  generateTagReport(inFile, outFile);
+}
