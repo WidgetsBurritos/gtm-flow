@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Google Tag Manager Flow Charts</title>
+</head>
+<body>
+  <div class="mermaid">
+graph TD
+	trigger5{Trigger:<br>Event - Global Login Click} --> blockingTrigger51052{Level 3 Preference Blocking Trigger}
+	blockingTrigger51052{Level 3 Preference Blocking Trigger} --> blockingTrigger5758{Exception - Consent Required}
+	blockingTrigger5758{Exception - Consent Required} --> tag2[Tag: GA - Global Login Event]
+</div>
+<div class="mermaid">
+graph TD
+	trigger24{Trigger:<br>Event - Generic} --> blockingTrigger241052{Level 3 Preference Blocking Trigger}
+	blockingTrigger241052{Level 3 Preference Blocking Trigger} --> blockingTrigger24758{Exception - Consent Required}
+	blockingTrigger24758{Exception - Consent Required} --> tag21[Tag: GA - Generic Event]
+</div>
+<div class="mermaid">
+graph TD
+	trigger48{Trigger:<br>Event - Form Click CTA} --> blockingTrigger481052{Level 3 Preference Blocking Trigger}
+	blockingTrigger481052{Level 3 Preference Blocking Trigger} --> blockingTrigger48758{Exception - Consent Required}
+	blockingTrigger48758{Exception - Consent Required} --> tag156[Tag: GA - Form Modal CTA Click]
+	trigger48{Trigger:<br>Event - Form Click CTA} --> blockingTrigger481052{Level 3 Preference Blocking Trigger}
+	blockingTrigger481052{Level 3 Preference Blocking Trigger} --> blockingTrigger48758{Exception - Consent Required}
+	blockingTrigger48758{Exception - Consent Required} --> tag395[Tag: DC - Sales - Request Quote CTA Click]
+</div>
+<div class="mermaid">
+graph TD
+	trigger49{Trigger:<br>Event - raxFormSuccess} --> blockingTrigger491052{Level 3 Preference Blocking Trigger}
+	blockingTrigger491052{Level 3 Preference Blocking Trigger} --> blockingTrigger49720{Exception - Unsubscribe Form}
+	blockingTrigger49720{Exception - Unsubscribe Form} --> blockingTrigger49721{Exception - DC Whitelist Hostnames}
+	blockingTrigger49721{Exception - DC Whitelist Hostnames} --> blockingTrigger49758{Exception - Consent Required}
+	blockingTrigger49758{Exception - Consent Required} --> tag68[Tag: DC - Form Submission]
+	trigger49{Trigger:<br>Event - raxFormSuccess} --> blockingTrigger491052{Level 3 Preference Blocking Trigger}
+	blockingTrigger491052{Level 3 Preference Blocking Trigger} --> blockingTrigger49758{Exception - Consent Required}
+	blockingTrigger49758{Exception - Consent Required} --> tag76[Tag: Adwords Conversion - Form Submit]
+	trigger49{Trigger:<br>Event - raxFormSuccess} --> blockingTrigger491052{Level 3 Preference Blocking Trigger}
+	blockingTrigger491052{Level 3 Preference Blocking Trigger} --> blockingTrigger4946{Exception - Form Missing ID Attribute}
+	blockingTrigger4946{Exception - Form Missing ID Attribute} --> blockingTrigger49758{Exception - Consent Required}
+	blockingTrigger49758{Exception - Consent Required} --> tag99[Tag: GA - Site Submission - Form Success Event]
+	trigger49{Trigger:<br>Event - raxFormSuccess} --> blockingTrigger491052{Level 3 Preference Blocking Trigger}
+	blockingTrigger491052{Level 3 Preference Blocking Trigger} --> blockingTrigger4946{Exception - Form Missing ID Attribute}
+	blockingTrigger4946{Exception - Form Missing ID Attribute} --> blockingTrigger49549{Exception - SFDC form submission only}
+	blockingTrigger49549{Exception - SFDC form submission only} --> blockingTrigger49758{Exception - Consent Required}
+	blockingTrigger49758{Exception - Consent Required} --> tag196[Tag: Bing - Site Submission - SFDC]
+	trigger49{Trigger:<br>Event - raxFormSuccess} --> blockingTrigger491052{Level 3 Preference Blocking Trigger}
+	blockingTrigger491052{Level 3 Preference Blocking Trigger} --> blockingTrigger49758{Exception - Consent Required}
+	blockingTrigger49758{Exception - Consent Required} --> blockingTrigger49990{Exception - Landing Pages Only}
+	blockingTrigger49990{Exception - Landing Pages Only} --> tag374[Tag: Facebook - Track Lead]
+	trigger49{Trigger:<br>Event - raxFormSuccess} --> blockingTrigger491052{Level 3 Preference Blocking Trigger}
+	blockingTrigger491052{Level 3 Preference Blocking Trigger} --> blockingTrigger49758{Exception - Consent Required}
+	blockingTrigger49758{Exception - Consent Required} --> blockingTrigger49992{Exception - Landing Pages Excluded}
+	blockingTrigger49992{Exception - Landing Pages Excluded} --> tag391[Tag: Facebook - Track Contact - Site Sub]
+	trigger49{Trigger:<br>Event - raxFormSuccess} --> blockingTrigger491052{Level 3 Preference Blocking Trigger}
+	blockingTrigger491052{Level 3 Preference Blocking Trigger} --> blockingTrigger49758{Exception - Consent Required}
+	blockingTrigger49758{Exception - Consent Required} --> tag402[Tag: LinkedIn - Lead]
+	trigger49{Trigger:<br>Event - raxFormSuccess} --> blockingTrigger491052{Level 3 Preference Blocking Trigger}
+	blockingTrigger491052{Level 3 Preference Blocking Trigger} --> blockingTrigger49758{Exception - Consent Required}
+	blockingTrigger49758{Exception - Consent Required} --> blockingTrigger49990{Exception - Landing Pages Only}
+	blockingTrigger49990{Exception - Landing Pages Only} --> tag408[Tag: LinkedIn - Download]
+</div>
+<div class="mermaid">
+graph TD
+	trigger51{Trigger:<br>Event - Apps Catalog - Click Deploy} --> blockingTrigger511052{Level 3 Preference Blocking Trigger}
+	blockingTrigger511052{Level 3 Preference Blocking Trigger} --> blockingTrigger51758{Exception - Consent Required}
+	blockingTrigger51758{Exception - Consent Required} --> tag49[Tag: GA - Apps Catalog - Click Deploy]
+</div>
+<div class="mermaid">
+graph TD
+	trigger96{Trigger:<br>Event - Chat - Started} --> blockingTrigger961052{Level 3 Preference Blocking Trigger}
+	blockingTrigger961052{Level 3 Preference Blocking Trigger} --> blockingTrigger96758{Exception - Consent Required}
+	blockingTrigger96758{Exception - Consent Required} --> tag67[Tag: DC - Chat Initiated]
+	trigger96{Trigger:<br>Event - Chat - Started} --> blockingTrigger961052{Level 3 Preference Blocking Trigger}
+	blockingTrigger961052{Level 3 Preference Blocking Trigger} --> blockingTrigger96758{Exception - Consent Required}
+	blockingTrigger96758{Exception - Consent Required} --> tag94[Tag: GA - Event - Chat Started]
+	trigger96{Trigger:<br>Event - Chat - Started} --> blockingTrigger961052{Level 3 Preference Blocking Trigger}
+	blockingTrigger961052{Level 3 Preference Blocking Trigger} --> blockingTrigger96758{Exception - Consent Required}
+	blockingTrigger96758{Exception - Consent Required} --> tag167[Tag: DC - Conversion - Live Chat Startup]
+</div>
+<div class="mermaid">
+graph TD
+	trigger98{Trigger:<br>Event - Form Submit Partner Application} --> blockingTrigger981052{Level 3 Preference Blocking Trigger}
+	blockingTrigger981052{Level 3 Preference Blocking Trigger} --> blockingTrigger98758{Exception - Consent Required}
+	blockingTrigger98758{Exception - Consent Required} --> tag69[Tag: DC - Partner Application Submission]
+</div>
+<div class="mermaid">
+graph TD
+	trigger100{Trigger:<br>Event - Partner Application Thank You} --> blockingTrigger1001052{Level 3 Preference Blocking Trigger}
+	blockingTrigger1001052{Level 3 Preference Blocking Trigger} --> blockingTrigger100758{Exception - Consent Required}
+	blockingTrigger100758{Exception - Consent Required} --> tag70[Tag: DC - Partner Application Thank You]
+</div>
+<div class="mermaid">
+graph TD
+	trigger119{Trigger:<br>Event - Chat - Initiated NL} --> blockingTrigger1191052{Level 3 Preference Blocking Trigger}
+	blockingTrigger1191052{Level 3 Preference Blocking Trigger} --> blockingTrigger119758{Exception - Consent Required}
+	blockingTrigger119758{Exception - Consent Required} --> tag81[Tag: Adwords Remarketing - NL Chat]
+</div>
+<div class="mermaid">
+graph TD
+	trigger120{Trigger:<br>Event - Click Login} --> blockingTrigger1201052{Level 3 Preference Blocking Trigger}
+	blockingTrigger1201052{Level 3 Preference Blocking Trigger} --> blockingTrigger120758{Exception - Consent Required}
+	blockingTrigger120758{Exception - Consent Required} --> tag78[Tag: Adwords Remarketing - Click Login]
+</div>
+<div class="mermaid">
+graph TD
+	trigger121{Trigger:<br>Page View - Window Loaded English Content} --> blockingTrigger1211052{Level 3 Preference Blocking Trigger}
+	blockingTrigger1211052{Level 3 Preference Blocking Trigger} --> blockingTrigger121758{Exception - Consent Required}
+	blockingTrigger121758{Exception - Consent Required} --> tag79[Tag: Adwords Remarketing - English Content]
+</div>
+<div class="mermaid">
+graph TD
+	trigger123{Trigger:<br>Page View - NL Content} --> blockingTrigger1231052{Level 3 Preference Blocking Trigger}
+	blockingTrigger1231052{Level 3 Preference Blocking Trigger} --> blockingTrigger123758{Exception - Consent Required}
+	blockingTrigger123758{Exception - Consent Required} --> tag82[Tag: Adwords Remarketing - NL Content]
+</div>
+<div class="mermaid">
+graph TD
+	trigger125{Trigger:<br>Page View - Portuguese Content} --> blockingTrigger1251052{Level 3 Preference Blocking Trigger}
+	blockingTrigger1251052{Level 3 Preference Blocking Trigger} --> blockingTrigger125758{Exception - Consent Required}
+	blockingTrigger125758{Exception - Consent Required} --> tag85[Tag: Adwords Remarketing - Portuguese Content]
+</div>
+<div class="mermaid">
+graph TD
+	trigger126{Trigger:<br>Page View - Spanish Content} --> blockingTrigger1261052{Level 3 Preference Blocking Trigger}
+	blockingTrigger1261052{Level 3 Preference Blocking Trigger} --> blockingTrigger126758{Exception - Consent Required}
+	blockingTrigger126758{Exception - Consent Required} --> tag86[Tag: Adwords Remarketing - Spanish Content]
+</div>
+<div class="mermaid">
+graph TD
+	trigger127{Trigger:<br>Page View - Window Loaded UK Content} --> blockingTrigger1271052{Level 3 Preference Blocking Trigger}
+	blockingTrigger1271052{Level 3 Preference Blocking Trigger} --> blockingTrigger127758{Exception - Consent Required}
+	blockingTrigger127758{Exception - Consent Required} --> tag87[Tag: Adwords Remarketing - UK Content]
+</div>
+<div class="mermaid">
+graph TD
+	trigger134{Trigger:<br>Event - Download} --> blockingTrigger1341052{Level 3 Preference Blocking Trigger}
+	blockingTrigger1341052{Level 3 Preference Blocking Trigger} --> blockingTrigger134758{Exception - Consent Required}
+	blockingTrigger134758{Exception - Consent Required} --> tag105[Tag: GA - Download]
+	trigger134{Trigger:<br>Event - Download} --> blockingTrigger1341052{Level 3 Preference Blocking Trigger}
+	blockingTrigger1341052{Level 3 Preference Blocking Trigger} --> blockingTrigger134758{Exception - Consent Required}
+	blockingTrigger134758{Exception - Consent Required} --> tag206[Tag: DC - Conversion - Content Download]
+</div>
+<div class="mermaid">
+graph TD
+	trigger198{Trigger:<br>Event - Demandbase Loaded} --> blockingTrigger1981052{Level 3 Preference Blocking Trigger}
+	blockingTrigger1981052{Level 3 Preference Blocking Trigger} --> blockingTrigger198758{Exception - Consent Required}
+	blockingTrigger198758{Exception - Consent Required} --> tag106[Tag: GA - Event - Demandbase Loaded]
+</div>
+<div class="mermaid">
+graph TD
+	trigger211{Trigger:<br>Event - raxFormSubmit} --> blockingTrigger2111052{Level 3 Preference Blocking Trigger}
+	blockingTrigger2111052{Level 3 Preference Blocking Trigger} --> blockingTrigger21146{Exception - Form Missing ID Attribute}
+	blockingTrigger21146{Exception - Form Missing ID Attribute} --> blockingTrigger211758{Exception - Consent Required}
+	blockingTrigger211758{Exception - Consent Required} --> tag33[Tag: GA - Site Submission - Form Submit Event]
+</div>
+<div class="mermaid">
+graph TD
+	trigger256{Trigger:<br>Event - Webform Submit} --> blockingTrigger2561052{Level 3 Preference Blocking Trigger}
+	blockingTrigger2561052{Level 3 Preference Blocking Trigger} --> blockingTrigger25646{Exception - Form Missing ID Attribute}
+	blockingTrigger25646{Exception - Form Missing ID Attribute} --> blockingTrigger256758{Exception - Consent Required}
+	blockingTrigger256758{Exception - Consent Required} --> tag33[Tag: GA - Site Submission - Form Submit Event]
+</div>
+<div class="mermaid">
+graph TD
+	trigger293{Trigger:<br>Event - GA Pageview} --> blockingTrigger2931052{Level 3 Preference Blocking Trigger}
+	blockingTrigger2931052{Level 3 Preference Blocking Trigger} --> blockingTrigger293758{Exception - Consent Required}
+	blockingTrigger293758{Exception - Consent Required} --> tag166[Tag: GA - Populate SFDC Form Fields]
+</div>
+<div class="mermaid">
+graph TD
+	trigger327{Trigger:<br>Event - Javascript Error} --> tag134[Tag: Utility - Javascript Error Event]
+</div>
+<div class="mermaid">
+graph TD
+	trigger330{Trigger:<br>Event - Rackspace Modal} --> blockingTrigger3301052{Level 3 Preference Blocking Trigger}
+	blockingTrigger3301052{Level 3 Preference Blocking Trigger} --> blockingTrigger330332{Exception - Infinity Modal Only}
+	blockingTrigger330332{Exception - Infinity Modal Only} --> blockingTrigger330758{Exception - Consent Required}
+	blockingTrigger330758{Exception - Consent Required} --> tag135[Tag: Infinity Refire]
+	trigger330{Trigger:<br>Event - Rackspace Modal} --> blockingTrigger3301052{Level 3 Preference Blocking Trigger}
+	blockingTrigger3301052{Level 3 Preference Blocking Trigger} --> blockingTrigger330758{Exception - Consent Required}
+	blockingTrigger330758{Exception - Consent Required} --> tag166[Tag: GA - Populate SFDC Form Fields]
+	trigger330{Trigger:<br>Event - Rackspace Modal} --> blockingTrigger330941{Exception - Chat Unavailable}
+	blockingTrigger330941{Exception - Chat Unavailable} --> tag378[Tag: Chat - Show Links and Chat Available Event]
+	trigger330{Trigger:<br>Event - Rackspace Modal} --> blockingTrigger3301053{Level 2 Preference Blocking Trigger}
+	blockingTrigger3301053{Level 2 Preference Blocking Trigger} --> blockingTrigger330758{Exception - Consent Required}
+	blockingTrigger330758{Exception - Consent Required} --> tag1066[Tag: LazyLoading - Consent Granted]
+</div>
+<div class="mermaid">
+graph TD
+	trigger357{Trigger:<br>Event - User - Data Ready} --> blockingTrigger3571052{Level 3 Preference Blocking Trigger}
+	blockingTrigger3571052{Level 3 Preference Blocking Trigger} --> blockingTrigger357758{Exception - Consent Required}
+	blockingTrigger357758{Exception - Consent Required} --> tag143[Tag: Infinity Implementation]
+	trigger357{Trigger:<br>Event - User - Data Ready} --> tag147[Tag: GeoIP Sales Phone Replacement]
+	trigger357{Trigger:<br>Event - User - Data Ready} --> blockingTrigger3571052{Level 3 Preference Blocking Trigger}
+	blockingTrigger3571052{Level 3 Preference Blocking Trigger} --> blockingTrigger357758{Exception - Consent Required}
+	blockingTrigger357758{Exception - Consent Required} --> tag151[Tag: GA - Event - User Location]
+	trigger357{Trigger:<br>Event - User - Data Ready} --> blockingTrigger357184{Exception - No GTM Chat - Hostname}
+	blockingTrigger357184{Exception - No GTM Chat - Hostname} --> blockingTrigger357281{Exception - No GTM Chat - LiveAgent Show}
+	blockingTrigger357281{Exception - No GTM Chat - LiveAgent Show} --> tag210[Tag: Chat - Availability Check]
+</div>
+<div class="mermaid">
+graph TD
+	trigger363{Trigger:<br>Page View - Window Loaded} --> blockingTrigger3631052{Level 3 Preference Blocking Trigger}
+	blockingTrigger3631052{Level 3 Preference Blocking Trigger} --> blockingTrigger363758{Exception - Consent Required}
+	blockingTrigger363758{Exception - Consent Required} --> tag1[Tag: GA - Pageview]
+	trigger363{Trigger:<br>Page View - Window Loaded} --> blockingTrigger3631052{Level 3 Preference Blocking Trigger}
+	blockingTrigger3631052{Level 3 Preference Blocking Trigger} --> blockingTrigger363758{Exception - Consent Required}
+	blockingTrigger363758{Exception - Consent Required} --> tag5[Tag: DC - Global Remarketing]
+	trigger363{Trigger:<br>Page View - Window Loaded} --> blockingTrigger3631053{Level 2 Preference Blocking Trigger}
+	blockingTrigger3631053{Level 2 Preference Blocking Trigger} --> blockingTrigger363758{Exception - Consent Required}
+	blockingTrigger363758{Exception - Consent Required} --> tag61[Tag: DemandBase]
+	trigger363{Trigger:<br>Page View - Window Loaded} --> blockingTrigger3631052{Level 3 Preference Blocking Trigger}
+	blockingTrigger3631052{Level 3 Preference Blocking Trigger} --> blockingTrigger363758{Exception - Consent Required}
+	blockingTrigger363758{Exception - Consent Required} --> tag77[Tag: Adwords Remarketing - AU]
+	trigger363{Trigger:<br>Page View - Window Loaded} --> blockingTrigger3631052{Level 3 Preference Blocking Trigger}
+	blockingTrigger3631052{Level 3 Preference Blocking Trigger} --> blockingTrigger363758{Exception - Consent Required}
+	blockingTrigger363758{Exception - Consent Required} --> tag88[Tag: LinkedIn - All Pages]
+	trigger363{Trigger:<br>Page View - Window Loaded} --> blockingTrigger3631052{Level 3 Preference Blocking Trigger}
+	blockingTrigger3631052{Level 3 Preference Blocking Trigger} --> blockingTrigger363758{Exception - Consent Required}
+	blockingTrigger363758{Exception - Consent Required} --> tag116[Tag: Facebook - Tag and Init]
+	trigger363{Trigger:<br>Page View - Window Loaded} --> blockingTrigger3631052{Level 3 Preference Blocking Trigger}
+	blockingTrigger3631052{Level 3 Preference Blocking Trigger} --> blockingTrigger363758{Exception - Consent Required}
+	blockingTrigger363758{Exception - Consent Required} --> tag137[Tag: Utility - Set Rax Page Referrer]
+	trigger363{Trigger:<br>Page View - Window Loaded} --> blockingTrigger3631052{Level 3 Preference Blocking Trigger}
+	blockingTrigger3631052{Level 3 Preference Blocking Trigger} --> blockingTrigger363758{Exception - Consent Required}
+	blockingTrigger363758{Exception - Consent Required} --> tag154[Tag: Bing UET]
+	trigger363{Trigger:<br>Page View - Window Loaded} --> blockingTrigger3631052{Level 3 Preference Blocking Trigger}
+	blockingTrigger3631052{Level 3 Preference Blocking Trigger} --> blockingTrigger363758{Exception - Consent Required}
+	blockingTrigger363758{Exception - Consent Required} --> tag197[Tag: DC - Natural Search]
+	trigger363{Trigger:<br>Page View - Window Loaded} --> blockingTrigger3631052{Level 3 Preference Blocking Trigger}
+	blockingTrigger3631052{Level 3 Preference Blocking Trigger} --> blockingTrigger363758{Exception - Consent Required}
+	blockingTrigger363758{Exception - Consent Required} --> tag226[Tag: Twitter - Universal Website Tag]
+	trigger363{Trigger:<br>Page View - Window Loaded} --> blockingTrigger3631052{Level 3 Preference Blocking Trigger}
+	blockingTrigger3631052{Level 3 Preference Blocking Trigger} --> blockingTrigger363758{Exception - Consent Required}
+	blockingTrigger363758{Exception - Consent Required} --> tag250[Tag: Google - Conversion Linker]
+	trigger363{Trigger:<br>Page View - Window Loaded} --> blockingTrigger3631052{Level 3 Preference Blocking Trigger}
+	blockingTrigger3631052{Level 3 Preference Blocking Trigger} --> blockingTrigger363758{Exception - Consent Required}
+	blockingTrigger363758{Exception - Consent Required} --> blockingTrigger363935{Exception - No Google Optimize}
+	blockingTrigger363935{Exception - No Google Optimize} --> tag377[Tag: Google Optimize]
+	trigger363{Trigger:<br>Page View - Window Loaded} --> blockingTrigger3631052{Level 3 Preference Blocking Trigger}
+	blockingTrigger3631052{Level 3 Preference Blocking Trigger} --> blockingTrigger363758{Exception - Consent Required}
+	blockingTrigger363758{Exception - Consent Required} --> tag379[Tag: Madison Logic]
+	trigger363{Trigger:<br>Page View - Window Loaded} --> blockingTrigger3631052{Level 3 Preference Blocking Trigger}
+	blockingTrigger3631052{Level 3 Preference Blocking Trigger} --> blockingTrigger3631088{Exception - UK Only}
+	blockingTrigger3631088{Exception - UK Only} --> blockingTrigger363758{Exception - Consent Required}
+	blockingTrigger363758{Exception - Consent Required} --> tag382[Tag: Tech Target]
+	trigger363{Trigger:<br>Page View - Window Loaded} --> blockingTrigger3631052{Level 3 Preference Blocking Trigger}
+	blockingTrigger3631052{Level 3 Preference Blocking Trigger} --> blockingTrigger363758{Exception - Consent Required}
+	blockingTrigger363758{Exception - Consent Required} --> blockingTrigger363974{Exception - LATAM Pages Only}
+	blockingTrigger363974{Exception - LATAM Pages Only} --> tag384[Tag: MediaMath]
+	trigger363{Trigger:<br>Page View - Window Loaded} --> blockingTrigger3631028{Exception - NewsCred Pixel Key Only}
+	blockingTrigger3631028{Exception - NewsCred Pixel Key Only} --> blockingTrigger3631052{Level 3 Preference Blocking Trigger}
+	blockingTrigger3631052{Level 3 Preference Blocking Trigger} --> blockingTrigger363758{Exception - Consent Required}
+	blockingTrigger363758{Exception - Consent Required} --> tag393[Tag: NewsCred - Analytics]
+	trigger363{Trigger:<br>Page View - Window Loaded} --> blockingTrigger3631002{Exception - Landing Page Tradeshow Event Excluded}
+	blockingTrigger3631002{Exception - Landing Page Tradeshow Event Excluded} --> blockingTrigger3631052{Level 3 Preference Blocking Trigger}
+	blockingTrigger3631052{Level 3 Preference Blocking Trigger} --> blockingTrigger363758{Exception - Consent Required}
+	blockingTrigger363758{Exception - Consent Required} --> blockingTrigger363990{Exception - Landing Pages Only}
+	blockingTrigger363990{Exception - Landing Pages Only} --> blockingTrigger363995{Exception - Landing Page Thank You Excluded}
+	blockingTrigger363995{Exception - Landing Page Thank You Excluded} --> tag399[Tag: LinkedIn - KeyPageView]
+	trigger363{Trigger:<br>Page View - Window Loaded} --> blockingTrigger3631052{Level 3 Preference Blocking Trigger}
+	blockingTrigger3631052{Level 3 Preference Blocking Trigger} --> blockingTrigger3631057{Exception - APJ Only}
+	blockingTrigger3631057{Exception - APJ Only} --> blockingTrigger363758{Exception - Consent Required}
+	blockingTrigger363758{Exception - Consent Required} --> tag415[Tag: MRP Prelytix]
+	trigger363{Trigger:<br>Page View - Window Loaded} --> blockingTrigger3631053{Level 2 Preference Blocking Trigger}
+	blockingTrigger3631053{Level 2 Preference Blocking Trigger} --> blockingTrigger363758{Exception - Consent Required}
+	blockingTrigger363758{Exception - Consent Required} --> tag1066[Tag: LazyLoading - Consent Granted]
+	trigger363{Trigger:<br>Page View - Window Loaded} --> blockingTrigger3631052{Level 3 Preference Blocking Trigger}
+	blockingTrigger3631052{Level 3 Preference Blocking Trigger} --> blockingTrigger363758{Exception - Consent Required}
+	blockingTrigger363758{Exception - Consent Required} --> tag1084[Tag: Lucky Orange]
+</div>
+<div class="mermaid">
+graph TD
+	trigger482{Trigger:<br>Event - CTA Click} --> blockingTrigger4821052{Level 3 Preference Blocking Trigger}
+	blockingTrigger4821052{Level 3 Preference Blocking Trigger} --> blockingTrigger482758{Exception - Consent Required}
+	blockingTrigger482758{Exception - Consent Required} --> tag50[Tag: GA - CTA Click]
+</div>
+<div class="mermaid">
+graph TD
+	trigger528{Trigger:<br>Event - Call CTA Click} --> blockingTrigger5281052{Level 3 Preference Blocking Trigger}
+	blockingTrigger5281052{Level 3 Preference Blocking Trigger} --> blockingTrigger528758{Exception - Consent Required}
+	blockingTrigger528758{Exception - Consent Required} --> tag158[Tag: GA - Event - Call CTA Click]
+	trigger528{Trigger:<br>Event - Call CTA Click} --> blockingTrigger5281052{Level 3 Preference Blocking Trigger}
+	blockingTrigger5281052{Level 3 Preference Blocking Trigger} --> blockingTrigger528758{Exception - Consent Required}
+	blockingTrigger528758{Exception - Consent Required} --> tag389[Tag: Facebook - Track Contact - Call]
+	trigger528{Trigger:<br>Event - Call CTA Click} --> blockingTrigger5281052{Level 3 Preference Blocking Trigger}
+	blockingTrigger5281052{Level 3 Preference Blocking Trigger} --> blockingTrigger528758{Exception - Consent Required}
+	blockingTrigger528758{Exception - Consent Required} --> tag402[Tag: LinkedIn - Lead]
+</div>
+<div class="mermaid">
+graph TD
+	trigger552{Trigger:<br>Event - Social Click} --> blockingTrigger5521052{Level 3 Preference Blocking Trigger}
+	blockingTrigger5521052{Level 3 Preference Blocking Trigger} --> blockingTrigger552758{Exception - Consent Required}
+	blockingTrigger552758{Exception - Consent Required} --> tag162[Tag: GA - Social Click]
+</div>
+<div class="mermaid">
+graph TD
+	trigger567{Trigger:<br>Event - Click - Chat Link} --> blockingTrigger567184{Exception - No GTM Chat - Hostname}
+	blockingTrigger567184{Exception - No GTM Chat - Hostname} --> blockingTrigger567281{Exception - No GTM Chat - LiveAgent Show}
+	blockingTrigger567281{Exception - No GTM Chat - LiveAgent Show} --> tag163[Tag: Chat - Open Tab]
+</div>
+<div class="mermaid">
+graph TD
+	trigger581{Trigger:<br>Event - Form Submit} --> blockingTrigger5811052{Level 3 Preference Blocking Trigger}
+	blockingTrigger5811052{Level 3 Preference Blocking Trigger} --> blockingTrigger581758{Exception - Consent Required}
+	blockingTrigger581758{Exception - Consent Required} --> tag166[Tag: GA - Populate SFDC Form Fields]
+</div>
+<div class="mermaid">
+graph TD
+	trigger671{Trigger:<br>Event - YouTube video} --> blockingTrigger6711052{Level 3 Preference Blocking Trigger}
+	blockingTrigger6711052{Level 3 Preference Blocking Trigger} --> blockingTrigger671758{Exception - Consent Required}
+	blockingTrigger671758{Exception - Consent Required} --> tag54[Tag: GA - YouTube Tracking]
+	trigger671{Trigger:<br>Event - YouTube video} --> blockingTrigger6711052{Level 3 Preference Blocking Trigger}
+	blockingTrigger6711052{Level 3 Preference Blocking Trigger} --> blockingTrigger671758{Exception - Consent Required}
+	blockingTrigger671758{Exception - Consent Required} --> tag205[Tag: DC - Navigation - Video Engager]
+</div>
+<div class="mermaid">
+graph TD
+	trigger709{Trigger:<br>Event - Soundcloud} --> blockingTrigger7091052{Level 3 Preference Blocking Trigger}
+	blockingTrigger7091052{Level 3 Preference Blocking Trigger} --> blockingTrigger709758{Exception - Consent Required}
+	blockingTrigger709758{Exception - Consent Required} --> tag221[Tag: DC - Navigation - Audio Engager]
+</div>
+<div class="mermaid">
+graph TD
+	trigger726{Trigger:<br>Event - Chat - Sent} --> blockingTrigger7261052{Level 3 Preference Blocking Trigger}
+	blockingTrigger7261052{Level 3 Preference Blocking Trigger} --> blockingTrigger726758{Exception - Consent Required}
+	blockingTrigger726758{Exception - Consent Required} --> tag232[Tag: GA - Event - Chat Interactive]
+	trigger726{Trigger:<br>Event - Chat - Sent} --> blockingTrigger7261052{Level 3 Preference Blocking Trigger}
+	blockingTrigger7261052{Level 3 Preference Blocking Trigger} --> blockingTrigger726758{Exception - Consent Required}
+	blockingTrigger726758{Exception - Consent Required} --> tag233[Tag: GA - Event - Chat Sent]
+	trigger726{Trigger:<br>Event - Chat - Sent} --> blockingTrigger7261052{Level 3 Preference Blocking Trigger}
+	blockingTrigger7261052{Level 3 Preference Blocking Trigger} --> blockingTrigger726758{Exception - Consent Required}
+	blockingTrigger726758{Exception - Consent Required} --> tag234[Tag: Bing - Chat - Sent]
+	trigger726{Trigger:<br>Event - Chat - Sent} --> blockingTrigger7261052{Level 3 Preference Blocking Trigger}
+	blockingTrigger7261052{Level 3 Preference Blocking Trigger} --> blockingTrigger726758{Exception - Consent Required}
+	blockingTrigger726758{Exception - Consent Required} --> tag235[Tag: DC - Chat Interactive]
+	trigger726{Trigger:<br>Event - Chat - Sent} --> blockingTrigger7261052{Level 3 Preference Blocking Trigger}
+	blockingTrigger7261052{Level 3 Preference Blocking Trigger} --> blockingTrigger726758{Exception - Consent Required}
+	blockingTrigger726758{Exception - Consent Required} --> tag237[Tag: DC - Sales - Chat Sent]
+	trigger726{Trigger:<br>Event - Chat - Sent} --> blockingTrigger7261052{Level 3 Preference Blocking Trigger}
+	blockingTrigger7261052{Level 3 Preference Blocking Trigger} --> blockingTrigger726758{Exception - Consent Required}
+	blockingTrigger726758{Exception - Consent Required} --> tag390[Tag: Facebook - Track Contact - Chat]
+	trigger726{Trigger:<br>Event - Chat - Sent} --> blockingTrigger7261052{Level 3 Preference Blocking Trigger}
+	blockingTrigger7261052{Level 3 Preference Blocking Trigger} --> blockingTrigger726758{Exception - Consent Required}
+	blockingTrigger726758{Exception - Consent Required} --> tag402[Tag: LinkedIn - Lead]
+</div>
+<div class="mermaid">
+graph TD
+	trigger737{Trigger:<br>Event - Chat - Available} --> blockingTrigger737184{Exception - No GTM Chat - Hostname}
+	blockingTrigger737184{Exception - No GTM Chat - Hostname} --> blockingTrigger737281{Exception - No GTM Chat - LiveAgent Show}
+	blockingTrigger737281{Exception - No GTM Chat - LiveAgent Show} --> tag103[Tag: Chat - Start Session]
+	trigger737{Trigger:<br>Event - Chat - Available} --> blockingTrigger737941{Exception - Chat Unavailable}
+	blockingTrigger737941{Exception - Chat Unavailable} --> tag378[Tag: Chat - Show Links and Chat Available Event]
+</div>
+<div class="mermaid">
+graph TD
+	trigger746{Trigger:<br>TrustArc - Event Prefs Set} --> blockingTrigger7461052{Level 3 Preference Blocking Trigger}
+	blockingTrigger7461052{Level 3 Preference Blocking Trigger} --> blockingTrigger746758{Exception - Consent Required}
+	blockingTrigger746758{Exception - Consent Required} --> tag1[Tag: GA - Pageview]
+	trigger746{Trigger:<br>TrustArc - Event Prefs Set} --> blockingTrigger7461052{Level 3 Preference Blocking Trigger}
+	blockingTrigger7461052{Level 3 Preference Blocking Trigger} --> blockingTrigger746758{Exception - Consent Required}
+	blockingTrigger746758{Exception - Consent Required} --> tag5[Tag: DC - Global Remarketing]
+	trigger746{Trigger:<br>TrustArc - Event Prefs Set} --> blockingTrigger7461053{Level 2 Preference Blocking Trigger}
+	blockingTrigger7461053{Level 2 Preference Blocking Trigger} --> blockingTrigger746758{Exception - Consent Required}
+	blockingTrigger746758{Exception - Consent Required} --> tag61[Tag: DemandBase]
+	trigger746{Trigger:<br>TrustArc - Event Prefs Set} --> blockingTrigger7461052{Level 3 Preference Blocking Trigger}
+	blockingTrigger7461052{Level 3 Preference Blocking Trigger} --> blockingTrigger746758{Exception - Consent Required}
+	blockingTrigger746758{Exception - Consent Required} --> tag77[Tag: Adwords Remarketing - AU]
+	trigger746{Trigger:<br>TrustArc - Event Prefs Set} --> blockingTrigger7461052{Level 3 Preference Blocking Trigger}
+	blockingTrigger7461052{Level 3 Preference Blocking Trigger} --> blockingTrigger746758{Exception - Consent Required}
+	blockingTrigger746758{Exception - Consent Required} --> tag79[Tag: Adwords Remarketing - English Content]
+	trigger746{Trigger:<br>TrustArc - Event Prefs Set} --> blockingTrigger7461052{Level 3 Preference Blocking Trigger}
+	blockingTrigger7461052{Level 3 Preference Blocking Trigger} --> blockingTrigger746758{Exception - Consent Required}
+	blockingTrigger746758{Exception - Consent Required} --> tag87[Tag: Adwords Remarketing - UK Content]
+	trigger746{Trigger:<br>TrustArc - Event Prefs Set} --> blockingTrigger7461052{Level 3 Preference Blocking Trigger}
+	blockingTrigger7461052{Level 3 Preference Blocking Trigger} --> blockingTrigger746758{Exception - Consent Required}
+	blockingTrigger746758{Exception - Consent Required} --> tag88[Tag: LinkedIn - All Pages]
+	trigger746{Trigger:<br>TrustArc - Event Prefs Set} --> blockingTrigger7461052{Level 3 Preference Blocking Trigger}
+	blockingTrigger7461052{Level 3 Preference Blocking Trigger} --> blockingTrigger746758{Exception - Consent Required}
+	blockingTrigger746758{Exception - Consent Required} --> tag116[Tag: Facebook - Tag and Init]
+	trigger746{Trigger:<br>TrustArc - Event Prefs Set} --> blockingTrigger7461052{Level 3 Preference Blocking Trigger}
+	blockingTrigger7461052{Level 3 Preference Blocking Trigger} --> blockingTrigger746758{Exception - Consent Required}
+	blockingTrigger746758{Exception - Consent Required} --> tag137[Tag: Utility - Set Rax Page Referrer]
+	trigger746{Trigger:<br>TrustArc - Event Prefs Set} --> blockingTrigger7461052{Level 3 Preference Blocking Trigger}
+	blockingTrigger7461052{Level 3 Preference Blocking Trigger} --> blockingTrigger746758{Exception - Consent Required}
+	blockingTrigger746758{Exception - Consent Required} --> tag154[Tag: Bing UET]
+	trigger746{Trigger:<br>TrustArc - Event Prefs Set} --> blockingTrigger7461052{Level 3 Preference Blocking Trigger}
+	blockingTrigger7461052{Level 3 Preference Blocking Trigger} --> blockingTrigger746758{Exception - Consent Required}
+	blockingTrigger746758{Exception - Consent Required} --> tag197[Tag: DC - Natural Search]
+	trigger746{Trigger:<br>TrustArc - Event Prefs Set} --> blockingTrigger7461052{Level 3 Preference Blocking Trigger}
+	blockingTrigger7461052{Level 3 Preference Blocking Trigger} --> blockingTrigger746758{Exception - Consent Required}
+	blockingTrigger746758{Exception - Consent Required} --> tag226[Tag: Twitter - Universal Website Tag]
+	trigger746{Trigger:<br>TrustArc - Event Prefs Set} --> blockingTrigger7461052{Level 3 Preference Blocking Trigger}
+	blockingTrigger7461052{Level 3 Preference Blocking Trigger} --> blockingTrigger746758{Exception - Consent Required}
+	blockingTrigger746758{Exception - Consent Required} --> tag250[Tag: Google - Conversion Linker]
+	trigger746{Trigger:<br>TrustArc - Event Prefs Set} --> blockingTrigger7461052{Level 3 Preference Blocking Trigger}
+	blockingTrigger7461052{Level 3 Preference Blocking Trigger} --> blockingTrigger746758{Exception - Consent Required}
+	blockingTrigger746758{Exception - Consent Required} --> blockingTrigger746935{Exception - No Google Optimize}
+	blockingTrigger746935{Exception - No Google Optimize} --> tag377[Tag: Google Optimize]
+	trigger746{Trigger:<br>TrustArc - Event Prefs Set} --> blockingTrigger7461052{Level 3 Preference Blocking Trigger}
+	blockingTrigger7461052{Level 3 Preference Blocking Trigger} --> blockingTrigger746758{Exception - Consent Required}
+	blockingTrigger746758{Exception - Consent Required} --> tag379[Tag: Madison Logic]
+	trigger746{Trigger:<br>TrustArc - Event Prefs Set} --> blockingTrigger7461052{Level 3 Preference Blocking Trigger}
+	blockingTrigger7461052{Level 3 Preference Blocking Trigger} --> blockingTrigger7461088{Exception - UK Only}
+	blockingTrigger7461088{Exception - UK Only} --> blockingTrigger746758{Exception - Consent Required}
+	blockingTrigger746758{Exception - Consent Required} --> tag382[Tag: Tech Target]
+	trigger746{Trigger:<br>TrustArc - Event Prefs Set} --> blockingTrigger7461052{Level 3 Preference Blocking Trigger}
+	blockingTrigger7461052{Level 3 Preference Blocking Trigger} --> blockingTrigger746758{Exception - Consent Required}
+	blockingTrigger746758{Exception - Consent Required} --> blockingTrigger746974{Exception - LATAM Pages Only}
+	blockingTrigger746974{Exception - LATAM Pages Only} --> tag384[Tag: MediaMath]
+	trigger746{Trigger:<br>TrustArc - Event Prefs Set} --> blockingTrigger7461028{Exception - NewsCred Pixel Key Only}
+	blockingTrigger7461028{Exception - NewsCred Pixel Key Only} --> blockingTrigger7461052{Level 3 Preference Blocking Trigger}
+	blockingTrigger7461052{Level 3 Preference Blocking Trigger} --> blockingTrigger746758{Exception - Consent Required}
+	blockingTrigger746758{Exception - Consent Required} --> tag393[Tag: NewsCred - Analytics]
+	trigger746{Trigger:<br>TrustArc - Event Prefs Set} --> blockingTrigger7461002{Exception - Landing Page Tradeshow Event Excluded}
+	blockingTrigger7461002{Exception - Landing Page Tradeshow Event Excluded} --> blockingTrigger7461052{Level 3 Preference Blocking Trigger}
+	blockingTrigger7461052{Level 3 Preference Blocking Trigger} --> blockingTrigger746758{Exception - Consent Required}
+	blockingTrigger746758{Exception - Consent Required} --> blockingTrigger746990{Exception - Landing Pages Only}
+	blockingTrigger746990{Exception - Landing Pages Only} --> blockingTrigger746995{Exception - Landing Page Thank You Excluded}
+	blockingTrigger746995{Exception - Landing Page Thank You Excluded} --> tag399[Tag: LinkedIn - KeyPageView]
+	trigger746{Trigger:<br>TrustArc - Event Prefs Set} --> blockingTrigger7461052{Level 3 Preference Blocking Trigger}
+	blockingTrigger7461052{Level 3 Preference Blocking Trigger} --> blockingTrigger7461057{Exception - APJ Only}
+	blockingTrigger7461057{Exception - APJ Only} --> blockingTrigger746758{Exception - Consent Required}
+	blockingTrigger746758{Exception - Consent Required} --> tag415[Tag: MRP Prelytix]
+	trigger746{Trigger:<br>TrustArc - Event Prefs Set} --> blockingTrigger7461053{Level 2 Preference Blocking Trigger}
+	blockingTrigger7461053{Level 2 Preference Blocking Trigger} --> blockingTrigger746758{Exception - Consent Required}
+	blockingTrigger746758{Exception - Consent Required} --> tag1066[Tag: LazyLoading - Consent Granted]
+	trigger746{Trigger:<br>TrustArc - Event Prefs Set} --> blockingTrigger7461052{Level 3 Preference Blocking Trigger}
+	blockingTrigger7461052{Level 3 Preference Blocking Trigger} --> blockingTrigger746758{Exception - Consent Required}
+	blockingTrigger746758{Exception - Consent Required} --> tag1080[Tag: Adwords Remarketing - HK/SG]
+	trigger746{Trigger:<br>TrustArc - Event Prefs Set} --> blockingTrigger7461052{Level 3 Preference Blocking Trigger}
+	blockingTrigger7461052{Level 3 Preference Blocking Trigger} --> blockingTrigger746758{Exception - Consent Required}
+	blockingTrigger746758{Exception - Consent Required} --> tag1084[Tag: Lucky Orange]
+</div>
+<div class="mermaid">
+graph TD
+	trigger957{Trigger:<br>Event - Chat - Proactive Invitation Init} --> blockingTrigger957184{Exception - No GTM Chat - Hostname}
+	blockingTrigger957184{Exception - No GTM Chat - Hostname} --> blockingTrigger957281{Exception - No GTM Chat - LiveAgent Show}
+	blockingTrigger957281{Exception - No GTM Chat - LiveAgent Show} --> tag380[Tag: Chat - Proactive Invitation Init]
+</div>
+<div class="mermaid">
+graph TD
+	trigger959{Trigger:<br>Event - Chat - Chat Proactive Invitation} --> blockingTrigger959184{Exception - No GTM Chat - Hostname}
+	blockingTrigger959184{Exception - No GTM Chat - Hostname} --> blockingTrigger959281{Exception - No GTM Chat - LiveAgent Show}
+	blockingTrigger959281{Exception - No GTM Chat - LiveAgent Show} --> tag163[Tag: Chat - Open Tab]
+</div>
+<div class="mermaid">
+graph TD
+	trigger988{Trigger:<br>Event - Facebook Loaded} --> blockingTrigger9881052{Level 3 Preference Blocking Trigger}
+	blockingTrigger9881052{Level 3 Preference Blocking Trigger} --> blockingTrigger988758{Exception - Consent Required}
+	blockingTrigger988758{Exception - Consent Required} --> tag387[Tag: Facebook - Track PageView]
+	trigger988{Trigger:<br>Event - Facebook Loaded} --> blockingTrigger9881002{Exception - Landing Page Tradeshow Event Excluded}
+	blockingTrigger9881002{Exception - Landing Page Tradeshow Event Excluded} --> blockingTrigger9881052{Level 3 Preference Blocking Trigger}
+	blockingTrigger9881052{Level 3 Preference Blocking Trigger} --> blockingTrigger988758{Exception - Consent Required}
+	blockingTrigger988758{Exception - Consent Required} --> blockingTrigger988990{Exception - Landing Pages Only}
+	blockingTrigger988990{Exception - Landing Pages Only} --> blockingTrigger988995{Exception - Landing Page Thank You Excluded}
+	blockingTrigger988995{Exception - Landing Page Thank You Excluded} --> tag388[Tag: Facebook - Track ViewContent]
+</div>
+<div class="mermaid">
+graph TD
+	trigger1006{Trigger:<br>Event - SpiralEdge Case Study CTA Click} --> blockingTrigger10061052{Level 3 Preference Blocking Trigger}
+	blockingTrigger10061052{Level 3 Preference Blocking Trigger} --> blockingTrigger1006758{Exception - Consent Required}
+	blockingTrigger1006758{Exception - Consent Required} --> tag394[Tag: DC - SpiralEdge Cast Study Button Click]
+</div>
+<div class="mermaid">
+graph TD
+	trigger1007{Trigger:<br>Event - Subnav Request Quote CTA Click} --> blockingTrigger10071052{Level 3 Preference Blocking Trigger}
+	blockingTrigger10071052{Level 3 Preference Blocking Trigger} --> blockingTrigger1007758{Exception - Consent Required}
+	blockingTrigger1007758{Exception - Consent Required} --> tag395[Tag: DC - Sales - Request Quote CTA Click]
+</div>
+<div class="mermaid">
+graph TD
+	trigger1030{Trigger:<br>Event - NewsCred Loaded} --> blockingTrigger10301052{Level 3 Preference Blocking Trigger}
+	blockingTrigger10301052{Level 3 Preference Blocking Trigger} --> blockingTrigger1030758{Exception - Consent Required}
+	blockingTrigger1030758{Exception - Consent Required} --> tag407[Tag: NewsCred - Content Tracking Pixels]
+</div>
+<div class="mermaid">
+graph TD
+	trigger1043{Trigger:<br>Social - Sharing Links} --> blockingTrigger10431052{Level 3 Preference Blocking Trigger}
+	blockingTrigger10431052{Level 3 Preference Blocking Trigger} --> blockingTrigger1043758{Exception - Consent Required}
+	blockingTrigger1043758{Exception - Consent Required} --> tag410[Tag: Social - Twitter Share Button]
+	trigger1043{Trigger:<br>Social - Sharing Links} --> blockingTrigger10431052{Level 3 Preference Blocking Trigger}
+	blockingTrigger10431052{Level 3 Preference Blocking Trigger} --> blockingTrigger1043758{Exception - Consent Required}
+	blockingTrigger1043758{Exception - Consent Required} --> tag412[Tag: Social - LinkedIn Sharing Button]
+</div>
+<div class="mermaid">
+graph TD
+	trigger1079{Trigger:<br>Page View - Window Loaded - HK/SG} --> blockingTrigger10791052{Level 3 Preference Blocking Trigger}
+	blockingTrigger10791052{Level 3 Preference Blocking Trigger} --> blockingTrigger1079758{Exception - Consent Required}
+	blockingTrigger1079758{Exception - Consent Required} --> tag1080[Tag: Adwords Remarketing - HK/SG]
+</div>
+
+  <script src="https://unpkg.com/mermaid@7.1.0/dist/mermaid.min.js"></script>
+  <script>
+    mermaid.initialize({startOnLoad: true, theme: 'forest'});
+  </script>
+</body>
+</html>
