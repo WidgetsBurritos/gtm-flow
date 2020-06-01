@@ -1,4 +1,4 @@
-# GTM Flow Chart Generator v0.0.1
+# GTM Flow Chart Generator
 
 This library provides a mechanism for visually representing Google Tag Manager
 (GTM) containers as a flow chart, or more accurately a state diagram. This can
