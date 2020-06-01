@@ -4,7 +4,7 @@
   "description": "This library provides a mechanism for visually representing Google Tag Manager (GTM) containers as a flow chart, or more accurately a state diagram. This can be very helpful for more complex GTM containers.",
   "main": "src/gtmFlow.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "keywords": [
     "gtm",
@@ -22,9 +22,11 @@
     "yargs": "^15.3.1"
   },
   "devDependencies": {
+    "chai": "^4.2.0",
     "eslint": "^7.1.0",
     "eslint-config-airbnb-base": "^14.1.0",
-    "eslint-plugin-import": "^2.20.2"
+    "eslint-plugin-import": "^2.20.2",
+    "mocha": "^7.2.0"
   },
   "engines": {
     "node": ">=8.0"

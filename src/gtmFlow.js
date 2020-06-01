@@ -112,14 +112,15 @@ const getOperation = (type) => {
 /**
  * Generates notes for filters.
  */
-const generateFilterNote = (template, filter) => {
-  if (filter && filter[0]) {
-    const { type, parameter } = filter[0];
-    // const params = filter[0].parameter;
-    if (parameter[0].type === 'TEMPLATE') {
-      const operation = getOperation(type);
-      template.push(`\t\t${parameter[0].value} ${operation} ${parameter[1].value}`);
-    }
+const generateFilterNote = (template, filters) => {
+  if (filters && filters[0]) {
+    filters.forEach((filter) => {
+      const { type, parameter } = filter;
+      if (parameter[0].type === 'TEMPLATE') {
+        const operation = getOperation(type);
+        template.push(`\t\t${parameter[0].value} ${operation} ${parameter[1].value}`);
+      }
+    });
   }
 };
 
@@ -137,6 +138,7 @@ const generateTriggerNote = (template, trigger, id) => {
   if (trigger.filter) {
     trigger.filter.forEach((filter) => {
       const { type, parameter } = filter;
+      console.log(filter);
       const operation = getOperation(type);
       const left = parameter[0].value;
       const right = parameter[1].value;
@@ -281,22 +283,31 @@ const getHtmlPage = (content) => `<!DOCTYPE html>
  * Parses a JSON file.
  */
 const parseJsonFile = (inFile) => {
-  // TODO: Exception handling.
-  const json = fs.readFileSync(inFile);
-  return JSON.parse(json);
+  try {
+    const json = fs.readFileSync(inFile);
+    const gtmContainer = JSON.parse(json);
+    if (typeof gtmContainer.containerVersion === 'undefined' || typeof gtmContainer.containerVersion.tag === 'undefined' || typeof gtmContainer.containerVersion.trigger === 'undefined') {
+      throw Error();
+    }
+    return gtmContainer;
+  } catch (err) {
+    throw Error('Not a valid GTM container export file');
+  }
 };
 
 /**
  * Generates the HTML for a specified flow chart.
  */
-const generateFlowChartHtml = (inFile, callback) => {
+const generateFlowChartHtml = (inFile, callback, verbose) => {
   const gtmContainer = parseJsonFile(inFile);
   const flowCharts = callback(gtmContainer);
 
   let html = '';
   flowCharts.forEach((flowChart) => {
     const flowChartDetails = flowChart.join('\n');
-    // console.log(`${flowChartDetails}\n`);
+    if (verbose) {
+      console.log(`${flowChartDetails}\n`);
+    }
     html += `<div class="mermaid">\n${flowChartDetails}\n</div>\n\n`;
   });
   return getHtmlPage(html);
@@ -315,16 +326,16 @@ const outFileErrorHandler = (err) => {
 /**
  * Generates an HTML flow chart based on passed in file.
  */
-const generateTriggerReport = (inFile, outFile) => {
-  const html = generateFlowChartHtml(inFile, generateTriggerReportFlowCharts);
+const generateTriggerReport = (inFile, outFile, verbose = false) => {
+  const html = generateFlowChartHtml(inFile, generateTriggerReportFlowCharts, verbose);
   fs.writeFile(outFile, html, outFileErrorHandler);
 };
 
 /**
  * Generates an HTML flow chart based on passed in file.
  */
-const generateTagReport = (inFile, outFile) => {
-  const html = generateFlowChartHtml(inFile, generateTagReportFlowCharts);
+const generateTagReport = (inFile, outFile, verbose = false) => {
+  const html = generateFlowChartHtml(inFile, generateTagReportFlowCharts, verbose);
   fs.writeFile(outFile, html, outFileErrorHandler);
 };
 
@@ -341,6 +352,7 @@ module.exports = {
   getTagHashMap,
   getTagHashMapByTrigger,
   getTriggerHashMap,
+  globalTriggers,
   outFileErrorHandler,
   parseJsonFile,
 };

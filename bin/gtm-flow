@@ -6,16 +6,19 @@ const { argv } = require('yargs')
   .alias('t', 'type')
   .demandOption('type')
   .choices('type', ['tag', 'trigger'])
-  .describe('infile', 'GTM container export file.')
+  .describe('infile', 'GTM container export file')
   .alias('i', 'infile')
   .demandOption('infile')
-  .describe('outfile', 'Destination file for the HTML report.')
+  .describe('outfile', 'Destination file for the HTML report')
   .alias('o', 'outfile')
-  .demandOption('outfile');
+  .demandOption('outfile')
+  .describe('verbose', 'Outputs state diagram markdown to the console')
+  .boolean('verbose')
+  .alias('v', 'verbose');
 const gtmFlow = require('../src/gtmFlow');
 
 if (argv.type === 'trigger') {
-  gtmFlow.generateTriggerReport(argv.infile, argv.outfile);
+  gtmFlow.generateTriggerReport(argv.infile, argv.outfile, argv.verbose);
 } else {
-  gtmFlow.generateTagReport(argv.infile, argv.outfile);
+  gtmFlow.generateTagReport(argv.infile, argv.outfile, argv.verbose);
 }
