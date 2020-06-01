@@ -1,11 +1,16 @@
 {
   "name": "@widgetsburritos/gtm-flow",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "This library provides a mechanism for visually representing Google Tag Manager (GTM) containers as a flow chart, or more accurately a state diagram. This can be very helpful for more complex GTM containers.",
   "main": "src/gtmFlow.js",
   "scripts": {
+    "lint": "eslint src/ test/",
     "test": "mocha"
   },
+  "pre-commit": [
+    "lint",
+    "test"
+  ],
   "keywords": [
     "gtm",
     "google tag manager",
@@ -26,7 +31,8 @@
     "eslint": "^7.1.0",
     "eslint-config-airbnb-base": "^14.1.0",
     "eslint-plugin-import": "^2.20.2",
-    "mocha": "^7.2.0"
+    "mocha": "^7.2.0",
+    "pre-commit": "^1.2.2"
   },
   "engines": {
     "node": ">=8.0"

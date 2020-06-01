@@ -10,7 +10,6 @@ const globalTriggers = {
   },
 };
 
-
 /**
  * Retrieves the trigger hash map.
  */
