@@ -220,7 +220,7 @@ const getHtmlPage = (content) => `<!DOCTYPE html>
 <head>
   <meta charset="utf-8">
   <title>Google Tag Manager Flow Charts</title>
-  <script src="./node_modules/mermaid/dist/mermaid.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.5.1/mermaid.min.js"></script>
   <style type="text/css">
   .mermaid {
     border-bottom: 5px dotted #999999;
