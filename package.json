@@ -2,7 +2,7 @@
   "name": "gtm-flow",
   "version": "1.0.0",
   "description": "",
-  "main": "src/gtm-flow.js",
+  "main": "src/cli.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,6 +10,9 @@
   "author": "David Stinemetze",
   "license": "ISC",
   "dependencies": {
+    "eslint": "^7.1.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-plugin-import": "^2.20.2",
     "mermaid": "^8.5.1"
   }
 }
