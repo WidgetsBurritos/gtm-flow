@@ -28,3 +28,6 @@ be very helpful for more complex GTM containers.
     gtm-flow --type trigger --infile /path/to/GTM-EXPORT-FILE.json --outfile /path/to/desired/location/report.html
     ```
 7. Open the report file to see the specific report.
+
+   _Note: It may take a little while to load, especially if you have several
+   triggers and tags._
