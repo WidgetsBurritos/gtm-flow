@@ -1,4 +1,6 @@
-const gtmFlow = require('./gtmFlow');
+#!/usr/bin/env node
+
+const gtmFlow = require('../src/gtmFlow');
 
 // TODO: read from command line.
 const inFile = 'rackspace-gtm.json';
