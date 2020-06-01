@@ -1,14 +1,21 @@
 #!/usr/bin/env node
 
+const { argv } = require('yargs')
+  .usage('Usage: $0 --type tag|trigger --infile gtm-export.json --outfile report.html')
+  .describe('type', 'Type of report to generate. Valid options: tag, trigger')
+  .alias('t', 'type')
+  .demandOption('type')
+  .choices('type', ['tag', 'trigger'])
+  .describe('infile', 'GTM container export file.')
+  .alias('i', 'infile')
+  .demandOption('infile')
+  .describe('outfile', 'Destination file for the HTML report.')
+  .alias('o', 'outfile')
+  .demandOption('outfile');
 const gtmFlow = require('../src/gtmFlow');
 
-// TODO: read from command line.
-const inFile = 'rackspace-gtm.json';
-const outFile = 'tag-report.html';
-const reportType = 'tag';
-
-if (reportType === 'trigger') {
-  gtmFlow.generateTriggerReport(inFile, outFile);
+if (argv.type === 'trigger') {
+  gtmFlow.generateTriggerReport(argv.infile, argv.outfile);
 } else {
-  gtmFlow.generateTagReport(inFile, outFile);
+  gtmFlow.generateTagReport(argv.infile, argv.outfile);
 }
