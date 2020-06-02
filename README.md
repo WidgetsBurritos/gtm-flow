@@ -31,3 +31,33 @@ be very helpful for more complex GTM containers.
 
    _Note: It may take a little while to load, especially if you have several
    triggers and tags._
+
+## Types of Reports
+
+### Tag Report
+
+Shows the trigger path into a particular tag, including blocking triggers. It provides additional context about the various filters related to each individual trigger.
+
+Example:
+![Sample tag report](./resources/tag-report.png)
+
+### Trigger Report
+
+Shows all tags that respond to a particular trigger, including blocking triggers.
+
+Example:
+![Sample trigger report](./resources/trigger-report.png)
+
+## Disclaimers
+
+All diagrams are generated using [Mermaid](https://github.com/mermaid-js/mermaid).
+It's not a perfect mechanism, and definitely has a few issues where lines
+sometimes overlap on top of of one another, or incredibly large graphs become
+a bit indecipherable. I've noticed this especially on the trigger reports,
+when a trigger points to a large quantity of tags. You mileage may vary.
+
+I've done a few hacky things with CSS here as well, that probably could (and
+should) be deferred to mermaid. I just haven't dug enough into that API to see
+if it is possible to do at this moment. For the time being, this report does
+what I need it to do. Feel free to open pull requests to extend functionality
+as you see fit.
