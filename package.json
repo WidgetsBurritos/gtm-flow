@@ -1,6 +1,6 @@
 {
   "name": "@widgetsburritos/gtm-flow",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "This library provides a mechanism for visually representing Google Tag Manager (GTM) containers as a flow chart, or more accurately a state diagram. This can be very helpful for more complex GTM containers.",
   "main": "src/gtmFlow.js",
   "scripts": {
