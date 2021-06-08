@@ -23,14 +23,14 @@
     "gtm-flow": "bin/gtm-flow"
   },
   "dependencies": {
-    "mermaid": "^8.5.1",
-    "yargs": "^15.3.1"
+    "mermaid": "^8.10.2",
+    "yargs": "^15.4.1"
   },
   "devDependencies": {
-    "chai": "^4.2.0",
-    "eslint": "^7.1.0",
-    "eslint-config-airbnb-base": "^14.1.0",
-    "eslint-plugin-import": "^2.20.2",
+    "chai": "^4.3.4",
+    "eslint": "^7.28.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.23.4",
     "mocha": "^7.2.0",
     "pre-commit": "^1.2.2"
   },
